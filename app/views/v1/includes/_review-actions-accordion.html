@@ -1,0 +1,267 @@
+
+    <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
+
+  {% if data['reviewEvidence']=='Awaiting missing evidence' 
+  or data['reviewEvidence']=='Referred to team leader'
+  or data['reviewEvidence']=='Awaiting a new ‘Report your income and expenses to do’' 
+  or data['reviewEvidence']=='Suspended the claim' 
+  %} 
+  {% else %}     
+  <div class="govuk-accordion__section">
+    <div class="govuk-accordion__section-header">
+      <h2 class="govuk-accordion__section-heading">
+        <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+          Refer to team leader
+        </span>
+      </h2>
+    </div>
+    <div id="accordion-default-content-1" class="govuk-accordion__section-content">
+      
+    <h3 class="govuk-heading-m">Actions</h3>
+    <p class="govuk-body">
+      • Add agent notes on the review landing page and Include details of anything else you have identified, for
+      example, missing evidence or expenses which are not permitted.<br><br>
+      • Remove yourself from supporting.<br><br>
+      • Add team leader as supporting.
+    </p>
+
+    </div>
+  </div>
+  {% endif %}
+
+  {% if data['reviewEvidence']=='Suspended the claim' %}
+    <div class="govuk-accordion__section">
+    <div class="govuk-accordion__section-header">
+      <h2 class="govuk-accordion__section-heading">
+        <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+         Lift suspension
+        </span>
+      </h2>
+    </div>
+    <div id="accordion-default-content-1" class="govuk-accordion__section-content">
+      
+    <h3 class="govuk-heading-m">Actions</h3>
+    <p class="govuk-body">
+      • Add agent notes on the review landing page and Include details of anything else you have identified, for
+      example, missing evidence or expenses which are not permitted.<br><br>
+      • Remove yourself from supporting.<br><br>
+      • Add team leader as supporting.
+    </p>
+
+    </div>
+  </div>
+    <div class="govuk-accordion__section">
+    <div class="govuk-accordion__section-header">
+      <h2 class="govuk-accordion__section-heading">
+        <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+        Close the claim
+        </span>
+      </h2>
+    </div>
+    <div id="accordion-default-content-1" class="govuk-accordion__section-content">
+      
+    <h3 class="govuk-heading-m">Actions</h3>
+    <p class="govuk-body">
+      • Add agent notes on the review landing page and Include details of anything else you have identified, for
+      example, missing evidence or expenses which are not permitted.<br><br>
+      • Remove yourself from supporting.<br><br>
+      • Add team leader as supporting.
+    </p>
+
+    </div>
+  </div>
+  {% endif %}
+
+
+{% if data['reviewEvidence']=='Awaiting missing evidence' or data['reviewEvidence']=='Awaiting a new ‘Report your income and expenses to do’' %} 
+  <div class="govuk-accordion__section">
+    <div class="govuk-accordion__section-header">
+      <h2 class="govuk-accordion__section-heading">
+        <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+         Suspend the claim
+        </span>
+      </h2>
+    </div>
+    <div id="accordion-default-content-1" class="govuk-accordion__section-content">
+      
+    <h3 class="govuk-heading-m">Actions</h3>
+    <p class="govuk-body">
+      • Add agent notes on the review landing page and Include details of anything else you have identified, for
+      example, missing evidence or expenses which are not permitted.<br><br>
+      • Remove yourself from supporting.<br><br>
+      • Add team leader as supporting.
+    </p>
+
+    </div>
+  </div>
+{% elif data['reviewEvidence']=='Suspended the claim' %}
+
+{% else %} 
+
+ 
+  <div class="govuk-accordion__section">
+    <div class="govuk-accordion__section-header">
+      <h2 class="govuk-accordion__section-heading">
+        <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
+         Call the claimant
+        </span>
+      </h2>
+    </div>
+    <div id="accordion-default-content-2" class="govuk-accordion__section-content">
+      <p class="govuk-body">Check if the claimant has already told us about any missing evidence. <br><br>
+
+      If they have not told us about any missing evidence or you need to discuss permitted expenses call the claimant
+      and discuss the review. <br><br>
+
+      Explain to the claimant: <br><br>
+
+      • that they can only claim for expenses that they have evidence for<br><br>
+
+      • that they will need to provide the missing evidence if they have it<br><br>
+
+      • that if they do not have the missing evidence or have claimed for expenses that are not permitted they will need
+      to complete a new ‘Report your income and expenses’ to-do<br><br>
+
+      <strong>If you contact the claimant</strong><br><br>
+
+      • If there is evidence missing and the claimant can provide it, you should follow the instructions in ‘request
+      missing evidence’.<br><br>
+
+      • If they do not have the missing evidence or they have claimed expenses that are not permitted you should follow
+      the instructions in ‘Request a new ‘Report your income and expenses’ to-do.<br><br>
+
+      If you cannot contact the claimant
+
+
+      <strong>Add history note</strong>
+
+    </p>
+
+    <div class="govuk-inset-text">
+
+      Self-employment income and expenses review <br><br>
+
+      Failed to contact the claimant to discuss further evidence needed. <br><br>
+
+      [RECORD WHAT YOU DID TO CONTACT THE CLAIMANT] <br><br>
+
+      You should follow the instructions in "Create a new Report your income and expenses" to-do. <br><br>
+    </div>
+    </div>
+  </div>
+  {% endif %}
+
+  <div class="govuk-accordion__section">
+    <div class="govuk-accordion__section-header">
+      <h2 class="govuk-accordion__section-heading">
+        <span class="govuk-accordion__section-button" id="accordion-default-heading-3">
+         Request missing evidence
+        </span>
+      </h2>
+    </div>
+    <div id="accordion-default-content-3" class="govuk-accordion__section-content">
+     <h3 class="govuk-heading-s">Create a new upload to-do</h3>
+    <p class="govuk-body">
+
+      1. Create a new "Claim review: Upload information" to-do, select Self employment from the type of upload
+      section.<br><br>
+
+      2. Copy and paste the following message into the Upload to-do.
+
+    </p>
+
+
+    <div class="govuk-inset-text">
+      <strong>Self-employment income and expenses review</strong><br><br>
+
+      We need some more evidence for your self-employed income and expenses for [START DATE OF ASSESSMENT PERIOD] to
+      [END DATE OF ASSESSMENT PERIOD].<br><br>
+
+      We have created a new "Claim review: Upload information" to-do for you to provide the following evidence:<br><br>
+
+      [List the specific evidence you need]<br><br>
+
+      You can only claim for expenses that you have evidence for. <br><br>
+
+      If you do not complete the to-do and provide the evidence requested by [DATE] your Universal Credit payment may be
+      stopped, and your claim could be closed.<br><br>
+
+      Send us a journal message if you want to discuss the review or you need help with your to-do.<br><br>
+
+    </div>
+
+    <h3 class="govuk-heading-s">Send journal message</h3>
+    <div class="govuk-inset-text">
+      <strong>Self-employment income and expenses review</strong><br><br>
+
+      We have created a new "Claim review: Upload information" to-do for you to complete.<br><br>
+
+      The to-do includes instructions about the specific evidence we need. <br><br>
+
+      If you do not complete the to-do and provide the evidence requested by [DATE] your Universal Credit payment may be
+      stopped, and your claim could be closed.<br><br>
+
+      Send us a journal message if you want to discuss the review or you need help with your to-do.<br><br>
+    </div>
+
+
+    <h3 class="govuk-heading-s">Add history note</h3>
+    <div class="govuk-inset-text">
+      <strong>Self-employment income and expenses review</strong><br><br>
+
+      Claim suspended as the claimant failed to complete the "Claim review: Upload information" to-do.<br><br>
+
+      They must complete it by [DATE] or their claim may be closed.<br><br>
+
+      Note: Only an income and expenses review agent should lift the suspension, after the evidence requested has been
+      received.
+
+    </div>
+    </div>
+  </div>
+  <div class="govuk-accordion__section">
+    <div class="govuk-accordion__section-header">
+      <h2 class="govuk-accordion__section-heading">
+        <span class="govuk-accordion__section-button" id="accordion-default-heading-4">
+         Create a new ‘Report your income and expenses’ to-do
+        </span>
+      </h2>
+    </div>
+    <div id="accordion-default-content-4" class="govuk-accordion__section-content">
+      <p>Create a new "Report your income and expenses" to-do for the appropriate assessment period and set BF date for
+      claimant’s pay date. </p>
+
+
+    <h3 class="govuk-heading-s">Send journal message</h3>
+
+    <div class="govuk-inset-text">
+      <strong></strong>Self-employed income and expenses review<br><br>
+
+      We have created a new "Report your income and expenses" to-do for [START DATE OF ASSESSMENT PERIOD] to [END DATE
+      OF ASSESSMENT PERIOD].<br><br>
+
+      [Add details of what evidence needs to be changed and why]<br><br>
+
+      You can only claim for expenses that you have evidence for. <br><br>
+
+      If you do not complete the to-do as agreed by [DATE] your Universal Credit payments may be stopped, and your claim
+      could be closed.<br><br>
+
+      Send us a journal message if you want to discuss the review or you need help with your to-do.<br><br>
+    </div>
+
+    <h3 class="govuk-heading-s"> Add history note</h3>
+
+    <div class="govuk-inset-text">
+
+      Self-employed income and expenses review<br><br>
+
+      A new "Report your income and expenses" to-do for [START DATE OF ASSESSMENT PERIOD] to [END DATE OF ASSESSMENT
+      PERIOD] has been created for the claimant. <br><br>
+
+      The claimant needs to complete it by [DATE].<br><br>
+
+    </div>
+    </div>
+  </div>
+</div>

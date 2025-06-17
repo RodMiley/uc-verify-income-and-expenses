@@ -1,0 +1,242 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Your dashboard",
+    href: "agent-dashboard"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        Verify income and expenses
+      </h1>
+
+{% include "./includes/_review-details.html" %}
+
+<h2 class="govuk-heading-m">Income and expenses review</h2>
+<ul class="govuk-task-list">
+  <!--  Request initial evidence -->
+      {% if data['scope'] %}
+        <li class="govuk-task-list__item govuk-task-list__item--with-link">
+                  <div class="govuk-task-list__name-and-hint">
+            <a class="govuk-link govuk-task-list__link" href="request-initial-evidence.html" aria-describedby="company-details-4-status">
+          Request initial evidence
+            </a>
+          </div>
+          <div class="govuk-task-list__status" id="company-details-4-status">
+      
+            Completed
+          
+          </div>
+         </li> 
+            {% else %}
+              <li class="govuk-task-list__item govuk-task-list__item--with-link">
+              <div class="govuk-task-list__name-and-hint">
+            <a class="govuk-link govuk-task-list__link" href="request-initial-evidence.html" aria-describedby="company-details-4-status">
+          Request initial evidence
+            </a>
+          </div>
+          <div class="govuk-task-list__status" id="company-details-4-status">
+            <strong class="govuk-tag govuk-tag--grey">
+            Not started
+            </strong>
+          </div>
+           </li>
+            {% endif %}
+       
+
+    <!-- End  Request initial evidence -->
+    <!--  Receive evidence -->
+  
+         {% if data['receiveEvidence']=='Completed this task' %}
+         <li class="govuk-task-list__item govuk-task-list__item--with-link">
+          <div class="govuk-task-list__name-and-hint">
+            <a class="govuk-link govuk-task-list__link" href="receive-evidence.html" aria-describedby="company-details-2-status">
+            Receive evidence
+            </a>
+          </div>
+          <div class="govuk-task-list__status" id="company-details-2-status">
+           Completed
+
+          </div>
+        </li>
+
+ 
+         {% elif data['receiveEvidence']=='Given more time' 
+            or data['receiveEvidence']=='Suspended the claim' 
+            or data['receiveEvidence']=='Requested evidence'
+         %}
+            <li class="govuk-task-list__item govuk-task-list__item--with-link">
+          <div class="govuk-task-list__name-and-hint">
+            <a class="govuk-link govuk-task-list__link" href="receive-evidence.html" aria-describedby="company-details-2-status">
+            Receive evidence
+            </a>
+          </div>
+          <div class="govuk-task-list__status" id="company-details-2-status">
+            <strong class="govuk-tag govuk-tag--blue">
+            In progress
+            </strong>
+          </div>
+        </li>
+
+        {% elif data['scope']=='yes' %}
+
+       <li class="govuk-task-list__item govuk-task-list__item--with-link">
+          <div class="govuk-task-list__name-and-hint">
+            <a class="govuk-link govuk-task-list__link" href="receive-evidence.html" aria-describedby="company-details-2-status">
+            Receive evidence
+            </a>
+          </div>
+          <div class="govuk-task-list__status" id="company-details-2-status">
+            <strong class="govuk-tag govuk-tag--grey">
+            Not started
+            </strong>
+          </div>
+        </li>
+          {% else %}
+            <li class="govuk-task-list__item govuk-task-list__item--with-link">
+          <div class="govuk-task-list__name-and-hint">
+            Receive evidence
+          </div>
+          <div class="govuk-task-list__status" id="company-details-2-status">
+            <strong class="govuk-tag govuk-tag--grey">
+            Cannot start
+            </strong>
+          </div>
+          </li>
+          {% endif %}
+
+        
+     <!--  End Receive evidence -->
+    <!--  Review and analyse evidence -->
+              {% if data['reviewEvidence']=='Completed this task' %}
+              <li class="govuk-task-list__item govuk-task-list__item--with-link">
+                  <div class="govuk-task-list__name-and-hint">
+              <a class="govuk-link govuk-task-list__link" href="review-and-analyse-evidence.html" aria-describedby="company-details-3-hint company-details-3-status">
+                Review and analyse evidence
+              </a>
+            </div>
+            <div class="govuk-task-list__status" id="company-details-3-status">
+             Completed
+            </div>
+          </li>
+                   {% elif data['reviewEvidence']=='Referred to team leader'
+                      or data['reviewEvidence']=='Awaiting missing evidence'
+                      or data['reviewEvidence']=='Awaiting a new ‘Report your income and expenses to do’'
+                      or data['reviewEvidence']=='Suspended the claim'
+                   %}
+          <li class="govuk-task-list__item govuk-task-list__item--with-link">
+                  <div class="govuk-task-list__name-and-hint">
+              <a class="govuk-link govuk-task-list__link" href="review-and-analyse-evidence.html" aria-describedby="company-details-3-hint company-details-3-status">
+                Review and analyse evidence
+              </a>
+            </div>
+            <div class="govuk-task-list__status" id="company-details-3-status">
+              <strong class="govuk-tag govuk-tag--blue">
+             In progress
+              </strong>
+            </div>
+          </li>
+
+
+          {% elif data['receiveEvidence']=='Completed this task' %}
+
+          <li class="govuk-task-list__item govuk-task-list__item--with-link">
+                  <div class="govuk-task-list__name-and-hint">
+              <a class="govuk-link govuk-task-list__link" href="review-and-analyse-evidence.html" aria-describedby="company-details-3-hint company-details-3-status">
+                Review and analyse evidence
+              </a>
+            </div>
+            <div class="govuk-task-list__status" id="company-details-3-status">
+              <strong class="govuk-tag govuk-tag--grey">
+              Not started
+              </strong>
+            </div>
+          </li>
+          
+              {% else %}
+                 <li class="govuk-task-list__item govuk-task-list__item--with-link">
+                  <div class="govuk-task-list__name-and-hint">
+              Review and analyse evidence
+            </div>
+            <div class="govuk-task-list__status" id="company-details-2-status">
+              <strong class="govuk-tag govuk-tag--grey">
+              Cannot start
+              </strong>
+            </div>
+            </li>
+              {% endif %}
+          
+
+    <!--  End Review and analyse evidence -->
+    <!--  Record outcome -->
+      
+            {% if data['scope']=='no' or data['receiveEvidence']=='Completed this task'%}
+              <li class="govuk-task-list__item govuk-task-list__item--with-link">
+              <div class="govuk-task-list__name-and-hint">
+            <a class="govuk-link govuk-task-list__link" href="record-outcome.html" aria-describedby="company-details-4-status">
+            Record outcome
+            </a>
+          </div>
+          <div class="govuk-task-list__status" id="company-details-4-status">
+            <strong class="govuk-tag govuk-tag--grey">
+            Not started
+            </strong>
+          </div>
+        </li>
+            {% else %}
+             <li class="govuk-task-list__item govuk-task-list__item--with-link">
+          <div class="govuk-task-list__name-and-hint">
+            Record outcome
+          </div>
+          <div class="govuk-task-list__status" id="company-details-4-status">
+            <strong class="govuk-tag govuk-tag--grey">
+            Cannot start
+            </strong>
+            </div>
+             </li>
+            {% endif %}
+       
+  <!--  End Record outcome -->
+</ul>
+
+<h2 class="govuk-heading-m">Agent notes</h2>
+<p>Use agent notes to document why you may have, given more time, suspended, closed the claim or requested the claimant to provided evidence or report their income and expenses again. </p>
+{% if data['requestInitialEvidenceNote'] %}
+
+<p>{{ data['requestInitialEvidenceNote'] }}</p>
+<hr>
+{% else %}
+    <p>
+        No agent notes
+      </p>
+{% endif %}
+  
+<form class="form"  method="post">
+<div class="govuk-form-group">
+  <h2 class="govuk-label-wrapper">
+    <label class="govuk-label govuk-label--m" for="request-initial-evidence-note">
+     Add agent note
+    </label>
+  </h2>
+  <textarea class="govuk-textarea" id="request-initial-evidence-note" name="requestInitialEvidenceNote" rows="8"  aria-describedby="request-initial-evidence-note-hint">{{ data['requestInitialEvidenceNote']}}</textarea>
+</div>
+<p><a href="">Attach a file</a></p>
+<button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+  Save note
+</button>
+</form>
+
+    </div>
+  </div>
+
+{% endblock %}

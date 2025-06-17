@@ -1,0 +1,91 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+       Receive evidence
+      </h1>
+
+      {% include "./includes/_review-details.html" %}
+{% if data['receiveEvidence']=='Awaiting evidence' %}
+<p>After requested evidence content.</p>      
+{% elif data['receiveEvidence']=='Suspended the claim' %}
+<p>After suspended content.</p>
+{% elif data['receiveEvidence']=='Given more time' %}
+<p>After given more time content.</p>
+{% else %}
+      <p>
+       Check if the claimant has uploaded the evidence requested. 
+       <br><br>
+        Make sure it is readable. If it is not request it again.
+       <br><br>
+        If the claimant has not provided the evidence, or been in contact check their journal, history notes and additional support page to see if they have any additional support needs.  
+       <br><br>
+        If they have additional support needs you can give them more time to provide the evidence. 
+       <br><br>
+        Otherwise suspend the claim or close the claim if the claimant has requested this. 
+  </p>
+  {% endif %}
+
+      <h2 class="govuk-heading-l">Instructions</h2>
+
+ {% include "./includes/_receive-actions-accordion.html" %}
+
+<form class="form" action="tasklist" method="post">
+  {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{{ govukRadios({
+  name: "receiveEvidence",
+  fieldset: {
+    legend: {
+      text: "What have you done?",
+      isPageHeading: false,
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+  items: [
+    {
+      value: "Given more time",
+      text: "Given more time"
+    },
+    {
+      value: "Suspended the claim",
+      text: "Suspended the claim"
+    },
+    {
+      value: "Awaiting evidence",
+      text: "Requested evidence"
+    },
+    {
+      value: "Completed this task",
+      text: "Completed this task"
+    }
+  ]
+}) }}
+
+<button type="submit" class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+</form>
+
+    </div>
+  </div>
+
+
+
+
+{% endblock %}

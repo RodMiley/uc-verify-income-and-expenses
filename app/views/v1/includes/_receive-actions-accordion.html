@@ -1,0 +1,80 @@
+
+
+<div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
+  
+{% if data['receiveEvidence']=='Given more time'
+   or data['receiveEvidence']=='Suspended the claim'
+   or data['receiveEvidence']=='Requested evidence'
+%}
+{% else %}
+  <div class="govuk-accordion__section">
+    <div class="govuk-accordion__section-header">
+      <h2 class="govuk-accordion__section-heading">
+        <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+         Give more time
+        </span>
+      </h2>
+    </div>
+    <div id="accordion-default-content-1" class="govuk-accordion__section-content">
+      <p class="govuk-body">This is the content for Writing well for Give more time.</p>
+    </div>
+  </div>
+  {% endif %}
+{% if data['receiveEvidence']=='Suspended the claim' %}
+
+    <div class="govuk-accordion__section">
+    <div class="govuk-accordion__section-header">
+      <h2 class="govuk-accordion__section-heading">
+        <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
+          Lift the suspension
+        </span>
+      </h2>
+    </div>
+    <div id="accordion-default-content-2" class="govuk-accordion__section-content">
+      <p class="govuk-body">This is the content for Writing well for lift the suspension</p>
+    </div>
+  </div>
+
+
+{% else %}
+  <div class="govuk-accordion__section">
+    <div class="govuk-accordion__section-header">
+      <h2 class="govuk-accordion__section-heading">
+        <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
+          Suspend the claim
+        </span>
+      </h2>
+    </div>
+    <div id="accordion-default-content-2" class="govuk-accordion__section-content">
+      <p class="govuk-body">This is the content for Writing well for Suspend the claim.</p>
+    </div>
+  </div>
+  {% endif %}
+  {% if data['receiveEvidence']=='Suspended the claim' %}
+  {% else %}
+  <div class="govuk-accordion__section">
+    <div class="govuk-accordion__section-header">
+      <h2 class="govuk-accordion__section-heading">
+        <span class="govuk-accordion__section-button" id="accordion-default-heading-3">
+         Request evidence
+        </span>
+      </h2>
+    </div>
+    <div id="accordion-default-content-3" class="govuk-accordion__section-content">
+      <p class="govuk-body">This is the content for Request evidence.</p>
+    </div>
+  </div>
+  {% endif %}
+  <div class="govuk-accordion__section">
+    <div class="govuk-accordion__section-header">
+      <h2 class="govuk-accordion__section-heading">
+        <span class="govuk-accordion__section-button" id="accordion-default-heading-4">
+         Close the claim
+        </span>
+      </h2>
+    </div>
+    <div id="accordion-default-content-4" class="govuk-accordion__section-content">
+      <p class="govuk-body">This is the content for Close the claim.</p>
+    </div>
+  </div>
+</div>

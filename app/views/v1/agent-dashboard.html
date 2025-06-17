@@ -1,0 +1,130 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-xl">
+        Agent dashboard
+      </h1>
+<!-- Start trigger area -->
+ <ul class="dashboard" id="id-caseload-summary">
+      <li class="dashboard__metric dashboard__metric--OUTSTANDING_JOURNAL_ENTRY">
+        <a class="dashboard__metric-link" href="journal-entries.html">
+          <div class="dashboard__metric-heading">
+            <span class="visuallyhidden govuk-visually-hidden">View</span>
+            Journal entries
+            <span class="dashboard__metric-heading-arrow" aria-hidden="true"></span>
+          </div>
+
+          <div class="dashboard__metric-value dashboard__metric-value--OUTSTANDING_JOURNAL_ENTRY " data-look-at-now-value-type="OUTSTANDING_JOURNAL_ENTRY">
+            <div>
+
+                <span class="dashboard__metric-base-value" data-look-at-now-value="">0</span>
+
+            </div>
+            <div class="dashboard__metric-icons">
+
+            </div>
+          </div>
+        </a>
+      </li>
+      <li class="dashboard__metric dashboard__metric--OTHER_ACTIONS">
+        <a class="dashboard__metric-link" href="other-actions.html">
+          <div class="dashboard__metric-heading">
+            <span class="visuallyhidden govuk-visually-hidden">View</span>
+            Other actions
+            <span class="dashboard__metric-heading-arrow" aria-hidden="true"></span>
+          </div>
+
+          <div class="dashboard__metric-value dashboard__metric-value--OTHER_ACTIONS " data-look-at-now-value-type="OTHER_ACTIONS">
+            <div>
+
+                <span class="dashboard__metric-base-value" data-look-at-now-value="">1</span>
+
+            </div>
+            <div class="dashboard__metric-icons">
+
+            </div>
+          </div>
+        </a>
+      </li>
+  </ul>
+
+  <!-- End trigger area -->
+
+  <!-- Start table area -->
+ <h2 class="govuk-heading-m">Your reviews</h2>
+ <p class="remove-outline" id="filters__results-number">Showing <span class="bold">1</span> claim review.</p>
+
+
+<table class="sortable-table claimant-table meta-list qa-claimant-table clear no-margin" aria-label="Claimants details - Name, Stage, Last updated" data-sort-status-message="Table sorted by {column} ({direction})" data-sort-ascending-text="ascending" data-sort-descending-text="descending" data-sortable-table-persist-id="homePage">
+  <thead>
+  <tr>
+    
+    <th scope="col" class="qa-name-title">Name</th>
+    <th scope="col" class="qa-next-appointment-title" aria-sort="none"><button type="button" class="link-style sortable-table__button" aria-describedby="sortable-table__sort-descending">Stage<span class="icon" aria-hidden="true"></span></button></th>
+      <th scope="col" class="qa-entitlement-date-title" aria-sort="none"><button type="button" class="link-style sortable-table__button" aria-describedby="sortable-table__sort-descending">Due<span class="icon" aria-hidden="true"></span></button></th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr class="single list-item">
+  
+  <td data-sort-value="null" class="name">
+    <a href="/v1/tasklist" class="qa-name">Luis Endo</a> 
+    
+  </td>
+  <td data-sort-value="0" class="nextAppointment" data-claimant-appointment="">
+     {% include "./includes/_stages.html" %}
+  </td>
+    <td data-sort-value="2025-06-02T12:00:42.962Z" class="dueDate">
+
+
+ {% if  data['scope']=='yes' and data['reviewEvidence']=='Awaiting a new ‘Report your income and expenses to do’' %}
+     20 July 2025 (Claimant's pay date)
+ 
+  
+  {% elif  data['scope']=='yes' and data['receiveEvidence']=='Suspended the claim' 
+      or   data['scope']=='yes' and data['reviewEvidence']=='Suspended the claim'
+  %}
+     14 July 2025
+
+  {% elif  data['scope']=='yes' 
+     or data['reviewEvidence']=='Requested evidence'
+     or data['recieveEvidence']=='Requested evidence'
+     %}
+    29 June 2025
+
+
+  {% elif data['scope']=='yes' and data['reviewEvidence']=='Referred to team leader'
+      or data['scope']=='yes' and data['receiveEvidence']=='Completed this task'
+   %}
+    
+ <!-- show no due date-->  
+   
+
+  {% else %}
+   {% endif %}
+  </td>
+</tr>
+  </tbody>
+</table>
+
+  <!-- Endtable area -->
+
+    </div>
+  </div>
+
+{% endblock %}

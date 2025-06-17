@@ -1,0 +1,15 @@
+      {% if data['reviewEvidence']=='Completed this task' %}
+      Record outcome
+      {% elif data['receiveEvidence']=='Completed this task' %}
+     Reviewing <br>
+          {% if data['reviewEvidence']!=='Completed this task' %}
+          <span class="govuk-body-s">{{ data['reviewEvidence'] }}</span>
+          {% endif %}
+      {% elif data['scope']=='yes' %}
+     Awaiting evidence <br>
+          {% if data['receiveEvidence']!=='Completed this task' %}
+          <span class="govuk-body-s">{{ data['receiveEvidence'] }}</span>
+          {% endif %}
+      {% else %}
+      Not started
+      {% endif %}
