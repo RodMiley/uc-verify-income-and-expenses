@@ -72,8 +72,8 @@
 
  
          {% elif data['receiveEvidence']=='Given more time' 
-            or data['receiveEvidence']=='Suspended the claim' 
-            or data['receiveEvidence']=='Requested evidence'
+            or data['reviewEvidence']=='Suspended the claim (Awaiting a report your income and expenses to do)'
+            or data['receiveEvidence']=='Awaiting evidence'
          %}
             <li class="govuk-task-list__item govuk-task-list__item--with-link">
           <div class="govuk-task-list__name-and-hint">
@@ -131,8 +131,8 @@
           </li>
                    {% elif data['reviewEvidence']=='Referred to team leader'
                       or data['reviewEvidence']=='Awaiting missing evidence'
-                      or data['reviewEvidence']=='Awaiting a new ‘Report your income and expenses to do’'
-                      or data['reviewEvidence']=='Suspended the claim'
+                      or data['reviewEvidence']=='Suspended the claim (Awaiting missing evidence)'
+                      or data['reviewEvidence']=='Suspended the claim (Awaiting a report your income and expenses to do)'
                    %}
           <li class="govuk-task-list__item govuk-task-list__item--with-link">
                   <div class="govuk-task-list__name-and-hint">

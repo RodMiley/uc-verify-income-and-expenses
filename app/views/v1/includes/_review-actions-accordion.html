@@ -4,7 +4,8 @@
   {% if data['reviewEvidence']=='Awaiting missing evidence' 
   or data['reviewEvidence']=='Referred to team leader'
   or data['reviewEvidence']=='Awaiting a new ‘Report your income and expenses to do’' 
-  or data['reviewEvidence']=='Suspended the claim' 
+  or  data['reviewEvidence']=='Suspended the claim (Awaiting missing evidence)' 
+  or data['reviewEvidence']=='Suspended the claim (Awaiting a report your income and expenses to do)'
   %} 
   {% else %}     
   <div class="govuk-accordion__section">
@@ -29,32 +30,14 @@
   </div>
   {% endif %}
 
-  {% if data['reviewEvidence']=='Suspended the claim' %}
+  {% if data['reviewEvidence']=='Suspended the claim (Awaiting missing evidence)' 
+     or data['reviewEvidence']=='Suspended the claim (Awaiting a report your income and expenses to do)'
+  %}
     <div class="govuk-accordion__section">
     <div class="govuk-accordion__section-header">
       <h2 class="govuk-accordion__section-heading">
         <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
          Lift suspension
-        </span>
-      </h2>
-    </div>
-    <div id="accordion-default-content-1" class="govuk-accordion__section-content">
-      
-    <h3 class="govuk-heading-m">Actions</h3>
-    <p class="govuk-body">
-      • Add agent notes on the review landing page and Include details of anything else you have identified, for
-      example, missing evidence or expenses which are not permitted.<br><br>
-      • Remove yourself from supporting.<br><br>
-      • Add team leader as supporting.
-    </p>
-
-    </div>
-  </div>
-    <div class="govuk-accordion__section">
-    <div class="govuk-accordion__section-header">
-      <h2 class="govuk-accordion__section-heading">
-        <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
-        Close the claim
         </span>
       </h2>
     </div>
@@ -94,7 +77,9 @@
 
     </div>
   </div>
-{% elif data['reviewEvidence']=='Suspended the claim' %}
+{% elif  data['reviewEvidence']=='Suspended the claim (Awaiting missing evidence)' 
+   or data['reviewEvidence']=='Suspended the claim (Awaiting a report your income and expenses to do)'
+%}
 
 {% else %} 
 
@@ -150,8 +135,9 @@
     </div>
   </div>
   {% endif %}
-
-  <div class="govuk-accordion__section">
+{% if data['reviewEvidence']=='Suspended the claim (Awaiting missing evidence)'%}
+{% else %}  
+<div class="govuk-accordion__section">
     <div class="govuk-accordion__section-header">
       <h2 class="govuk-accordion__section-heading">
         <span class="govuk-accordion__section-button" id="accordion-default-heading-3">
@@ -219,6 +205,7 @@
     </div>
     </div>
   </div>
+  {% endif %}
   <div class="govuk-accordion__section">
     <div class="govuk-accordion__section-header">
       <h2 class="govuk-accordion__section-heading">
@@ -262,6 +249,26 @@
       The claimant needs to complete it by [DATE].<br><br>
 
     </div>
+    </div>
+  </div>
+      <div class="govuk-accordion__section">
+    <div class="govuk-accordion__section-header">
+      <h2 class="govuk-accordion__section-heading">
+        <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+        Close the claim
+        </span>
+      </h2>
+    </div>
+    <div id="accordion-default-content-1" class="govuk-accordion__section-content">
+      
+    <h3 class="govuk-heading-m">Actions</h3>
+    <p class="govuk-body">
+      • Add agent notes on the review landing page and Include details of anything else you have identified, for
+      example, missing evidence or expenses which are not permitted.<br><br>
+      • Remove yourself from supporting.<br><br>
+      • Add team leader as supporting.
+    </p>
+
     </div>
   </div>
 </div>

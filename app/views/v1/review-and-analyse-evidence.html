@@ -22,12 +22,89 @@ href: "javascript:window.history.back()"
 
     {% include "./includes/_review-details.html" %}
 
-    <h2 class="govuk-heading-l">Review income and expenses and analyse self-employment evidence</h2>
+    <h2 class="govuk-heading-l">What you need to do</h2>
+
+        {% if data['reviewEvidence']=='Suspended the claim (Awaiting a report your income and expenses to do)' %}
+
+      <p>
+        Check if the claimant has completed the ‘Report your income and expenses’ to-do.<br><br>
+
+        If the claimant has not completed the requested to-do follow the instructions in ‘Close the claim’. <br><br>
+
+        If they have completed the to-do check if all the expenses are permitted and match what was agreed.<br><br>
+
+        If the expenses are not permitted or do not match what was agreed ‘Close the claim’.<br><br>
+
+        If all the expenses are permitted and the evidence matches follow the instructions in ‘lift the suspension’ and complete this task. 
+
+      </p>  
+ 
+      {% elif data['reviewEvidence']=='Suspended the claim (Awaiting missing evidence)' %}
+
+   <p>
+    1. Check if the claimant has completed the requested to-do and provided the missing evidence requested. <br><br>
+
+    If the claimant has not completed the requested to-do follow the instructions in ‘Close the claim’. <br><br>
+
+    If they have completed the to-do follow the instructions in ‘lift the suspension’. <br><br>
+
+    After you lift the suspension check that the expenses are all permitted and the evidence matches what was agreed. <br><br>
+
+    If all the expenses are permitted and the evidence matches complete this task. <br><br>
+
+    2. If the evidence does not match what was agreed or they have reported expenses that are not permitted follow the instructions in ‘Create a new ‘Report your income and expenses’. <br><br>
+   </p>
+
+      {% elif data['reviewEvidence']=='Awaiting a new ‘Report your income and expenses to do’'
+    %}
+       
+    <p>
+      Check if the claimant has completed the ‘Report your income and expenses’ to-do.<br><br>
+
+      If the claimant has not completed the requested to-do follow the instructions in ‘Suspend the claim’. <br><br>
+
+      If they have completed the to-do check if all the expenses are permitted and match what was agreed.  If all the expenses are permitted and the evidence matches complete this task.<br><br> 
+
+      If the to-do does not match what was agreed you can:<br><br>
+
+      • ‘Suspend the claim’ and ‘Create a new ‘Report your income and expenses’<br><br>
+
+      • ‘Suspend the claim’ and ‘request missing evidence’ if you feel it is appropriate<br><br>
+
+    </p>
+
+    {% elif data['reviewEvidence']=='Awaiting missing evidence' 
+    %}
+      <p>
+        Check if the claimant has completed the requested to-do and provided the missing evidence requested.<br><br>
+
+        If the claimant has not completed the requested to-do or provided the missing evidence follow the instructions in ‘Suspend  the claim’.<br><br>
+
+        if they have completed the to-do you need to decide whether the evidence provided matches what was agreed. <br><br>
+
+        If the evidence matches what was agreed, complete this task. <br><br>
+
+        You can request missing evidence again if you feel it is appropriate. Or you can ‘Create a new ‘Report your income and expenses’ to-do’. 
+      </p> 
+
+
+     {% elif data['reviewEvidence']=='Referred to team leader' %}
 
     <p>
-     Review the reported income and expenses for the relevant assessment period. <br><br>
+      1. Read the agent notes to understand why the review has been referred to a team leader.<br><br>
 
-      Check the guidance below to make sure you know whether the expenses are permitted:
+      2. Follow the instructions in ‘<strong>Call the claimant</strong>’.
+    </p>
+  
+    {% else %}
+
+         <p>
+      1. Review the reported income and expenses. <br><br>
+
+      2. Check the guidance below to make sure you know:<br><br>
+
+      • whether the expenses are permitted <br>
+      • what you need to analyse and consider when reviewing the reported income and expenses 
     </p>
 
     <h2 class="govuk-heading-l">
@@ -41,7 +118,7 @@ href: "javascript:window.history.back()"
     items: [
     {
     heading: {
-    text: "Review the permitted expenses"
+    text: "Review the permitted guidance"
     },
     content: {
     html: '<p class="govuk-body">
@@ -56,8 +133,11 @@ href: "javascript:window.history.back()"
     },
     {
     heading: {
-    text: "Guidance on analysing income and expences"
+    text: "Analyse the reported income and expenses"
     },
+    summary: {
+        text: "Instructions on the specific things you need to be aware of and check."
+      },
     content: {
     html: '<p class="govuk-body">
 
@@ -125,106 +205,33 @@ href: "javascript:window.history.back()"
     ]
     }) }}
 
-    <h2 class="govuk-heading-l">Next steps</h2>
-      {% if data['reviewEvidence']=='Suspended the claim' %}
-
-  <h3 class="govuk-heading-m">
-   After suspending the claim
-    </h3>
-
-     <p>If the claimant has provided the evidence we requested or completed the to-do you should lift the suspension. <br><br>
-
-      You should then review the evidence and decide whether the reported income and expenses match what was agreed.  If the evidence matches, complete this task.<br><br>
-
-      If the missing evidence does not match, you need to Request a new ‘Report your income and expenses’ to-do.<br><br>
-
-      If the ‘Report  your income and expenses’ to-do does not match what was agreed you need to close the claim.</p>
-
-    {% elif data['reviewEvidence']=='Awaiting missing evidence' 
-       or data['reviewEvidence']=='Awaiting a new ‘Report your income and expenses to do’'
-    %}
-       
 
 
-    <h3 class="govuk-heading-m">
-      {% if data['reviewEvidence']=='Awaiting missing evidence' %}
-      After requesting missing evidence
-      {% else %}
-      After creating a new 'Report your income and expenses' to-do
-      {% endif %}
-    
-    </h3>
+        <h2 class="govuk-heading-l">What you need to do after you have reviewed the evidence</h2>
+ 
+      <p>
 
-    <p>If you receive what we requested, you need to decide whether the reported income and expenses match what was agreed. <br><br>
+        1. You need to decide whether the reported income and expenses are all permitted and match the evidence provided. <br><br>
 
-      If the evidence matches what was agreed, complete this task. <br><br>
+        If the evidence matches and the expenses are all permitted, complete this task. <br><br>
 
-      Suspend the claim if the claimant has not:<br><br>
+        2. Follow the instructions in referring the review to a Team leader if any of the following applies:<br><br>
 
-      • provided the missing evidence requested<br>
-      • completed the requested to-do<br><br>
+        • using the home for business<br><br>
 
-      You can request missing evidence again if you feel it is appropriate. </p>
+        • business costs if working from home<br><br>
 
-     {% elif data['reviewEvidence']=='Referred to team leader' %}
+        • living at their place of business<br><br>
 
+        • simplified vs actual costs, including vehicle expenses<br><br>
 
-    <h3 class="govuk-heading-m">Call the claimant</h3>
-    <p>If the evidence does not match or the claimant has claimed expenses that are not permitted you should call the
-      claimant to discuss the review.</p>
+        • anything else that you feel needs further investigation<br><br>
 
-    <h3 class="govuk-heading-m">After the call</h3>
-    <p> • If their is missing evidence and the claimant can provide it create a new upload to-do.<br><br>
-        • If their is missing evidence and the claimant cannot provide or their are none permitted expenses create a new 'Report your income and expenses to-do'.<br><br>
-
-        Do not create a new 'Report your income and expenses'  to-do if you have requested more evidence.
-
-    </p>
-  
-    {% else %}
-
-    <h3 class="govuk-heading-m">Consider referring to a Team leader</h3>
-    <p>
-
-
-      You need to decide whether the reported income and expenses are all permitted and match the evidence provided.
-      <br><br>
-
-      If the evidence matches, complete this task. <br><br>
-
-      If the evidence does not match, refer the review to a team leader if any of the following applies: <br><br>
-
-      • using the home for business <br><br>
-
-      • business costs if working from home <br><br>
-
-      • living at their place of business <br><br>
-
-      • simplified vs actual costs, including vehicle expenses<br><br>
-
-      • anything else that you feel needs further investigation<br><br>
-
-
-      If you need to refer this case to your team leader, follow the refer to team leader instructions.
-
-    </p>
-
-        <h3 class="govuk-heading-m">Call the claimant</h3>
-    <p>If the evidence does not match or the claimant has claimed expenses that are not permitted you should call the
-      claimant to discuss the review.</p>
-
-    <h3 class="govuk-heading-m">After the call</h3>
-    <p> • If their is missing evidence and the claimant can provide it create a new upload to-do.<br><br>
-        • If their is missing evidence and the claimant cannot provide or their are none permitted expenses create a new 'Report your income and expenses to-do'.<br><br>
-
-        Do not create a new 'Report your income and expenses'  to-do if you have requested more evidence.
-
-    </p>
-
-
+        If you do not need to refer the review to a Team leader follow the instructions in ‘<strong>Call the claimant</strong>’.
+      </p>
      {% endif %}  
 
-
+    
    
 
     <h2 class="govuk-heading-l">Instructions</h2>
@@ -258,8 +265,12 @@ href: "javascript:window.history.back()"
       text: "Created a new ‘Report your income and expenses to do’"
       },
       {
-      value: "Suspended the claim",
-      text: "Suspended the claim"
+      value: "Suspended the claim (Awaiting missing evidence)",
+      text: "Suspended the claim (Awaiting missing evidence)"
+      },
+        {
+      value: "Suspended the claim (Awaiting a report your income and expenses to do)",
+      text: "Suspended the claim (Awaiting a report your income and expenses to do)"
       },
       {
       value: "Completed this task",

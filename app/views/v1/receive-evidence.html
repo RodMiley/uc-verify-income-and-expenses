@@ -22,22 +22,52 @@
 
       {% include "./includes/_review-details.html" %}
 {% if data['receiveEvidence']=='Awaiting evidence' %}
-<p>After requested evidence content.</p>      
+<p>
+  1.Check if the claimant has uploaded the evidence requested. <br><br>
+
+Make sure it is readable. If it is readable, complete this task. <br><br>
+
+If you cannot read the information <strong>request the evidence again</strong>. <br><br>
+
+2.If the claimant has not provided the information <strong>suspend the claim</strong>.  
+</p>      
 {% elif data['receiveEvidence']=='Suspended the claim' %}
-<p>After suspended content.</p>
+<p>
+ 1.Check if the claimant has uploaded the evidence requested. <br><br>
+
+Make sure it is readable. If it is readable, <strong>lift the suspension</strong> and complete this task. <br><br>
+
+If you cannot read the information <strong>request the evidence again</strong>. <br><br>
+
+2.If the claimant has not provided the information <strong>close the claim</strong>. <br><br> 
+
+</p>
 {% elif data['receiveEvidence']=='Given more time' %}
-<p>After given more time content.</p>
+<p>
+1. Check if the claimant has uploaded the evidence requested. <br><br>
+
+Make sure it is readable. If it is readable complete this task.  <br><br>
+
+If you cannot read the information <strong>request the evidence again</strong>.  <br><br>
+
+2. If the claimant does not have additional support needs and has not been in contact <strong>suspend the claim</strong>.  
+
+</p>
 {% else %}
       <p>
-       Check if the claimant has uploaded the evidence requested. 
-       <br><br>
-        Make sure it is readable. If it is not request it again.
-       <br><br>
-        If the claimant has not provided the evidence, or been in contact check their journal, history notes and additional support page to see if they have any additional support needs.  
-       <br><br>
-        If they have additional support needs you can give them more time to provide the evidence. 
-       <br><br>
-        Otherwise suspend the claim or close the claim if the claimant has requested this. 
+      1.Check if the claimant has uploaded the evidence requested. <br><br>
+
+      Make sure it is readable. If it is readable complete this task. <br><br>
+
+      2.If you cannot read the information <strong>request it again</strong>. <br><br>
+
+      If the claimant has not provided the evidence, or been in contact check if they have any additional support needs (check the journal, history notes and additional support page). <br><br> 
+
+      If they have additional support needs <strong>give them more time</strong> to provide the evidence. <br><br>
+
+      3. If the claimant does not have additional support needs and has not been in contact  <strong>suspend the claim</strong>.  <br></br>
+
+      You can close the claim at any time if the claimant asks us to. 
   </p>
   {% endif %}
 
