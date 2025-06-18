@@ -39,11 +39,14 @@
       • An open end date on either a FRAIMS or CFEMS interest<br>
       • This is a phone claim<br>
       * The claim is closed<br>
-      • <A:tel></A:tel>nother reason (following a case conference with your team leader)<br>
+      • nother reason (following a case conference with your team leader)<br>
 
       If any of these reasons apply, the review is out of scope and you should complete this task. <br><br>
 
       If the review is in scope follow the instructions in <strong>‘Review in scope’</strong>.
+
+      If any of these reasons apply, the review is out of scope and you should complete this task. 
+
 
 
 </p>
@@ -86,7 +89,7 @@
   name: "scope",
   fieldset: {
     legend: {
-      text: "Is the review in scope?",
+      text: "What have you done?",
       isPageHeading: true,
       classes: "govuk-fieldset__legend--m"
     }
@@ -94,11 +97,11 @@
   items: [
     {
       value: "yes",
-      text: "Yes"
+      text: "Completed the ‘Review in scope’ section"
     },
     {
       value: "no",
-      text: "No"
+      text: "Nothing, the claim is out of scope"
     }
   ]
 }) }}
