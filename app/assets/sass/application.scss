@@ -12869,3 +12869,7 @@ body:not(.js-enabled) .add-remove-block__add-trigger,body:not(.js-enabled) .add-
     width: 100%
 }
 
+.govuk-width-container, .uc-width-container {
+  max-width: 1440px;
+}
+

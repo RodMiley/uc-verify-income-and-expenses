@@ -6,7 +6,7 @@
 
 {% block beforeContent %}
   {{ govukBackLink({
-    text: "Back",
+    text: "Back to dashboard",
     href: "javascript:window.history.back()"
   }) }}
 {% endblock %}
@@ -21,39 +21,7 @@
       </h1>
 
   <!-- Start table area -->
- <h2 class="govuk-heading-m">Your reviews</h2>
- <p class="remove-outline" id="filters__results-number">Showing <span class="bold">1</span> claim review.</p>
-
-
-<table class="sortable-table claimant-table meta-list qa-claimant-table clear no-margin" aria-label="Claimants details - Name, Stage, Last updated" data-sort-status-message="Table sorted by {column} ({direction})" data-sort-ascending-text="ascending" data-sort-descending-text="descending" data-sortable-table-persist-id="homePage">
-  <thead>
-  <tr>
-    
-    <th scope="col" class="qa-name-title">Name</th>
-    <th scope="col" class="qa-next-appointment-title" aria-sort="none"><button type="button" class="link-style sortable-table__button" aria-describedby="sortable-table__sort-descending">Stage<span class="icon" aria-hidden="true"></span></button></th>
-    <th scope="col" class="qa-entitlement-date-title" aria-sort="none"><button type="button" class="link-style sortable-table__button" aria-describedby="sortable-table__sort-descending">Last updated<span class="icon" aria-hidden="true"></span></button></th>
-      <th scope="col" class="qa-entitlement-date-title" aria-sort="none"><button type="button" class="link-style sortable-table__button" aria-describedby="sortable-table__sort-descending">Due<span class="icon" aria-hidden="true"></span></button></th>
-  </tr>
-  </thead>
-  <tbody>
-    <tr class="single list-item">
-  
-  <td data-sort-value="null" class="name">
-    <a href="/v1/tasklist" class="qa-name">Luis Endo</a> 
-    
-  </td>
-  <td data-sort-value="0" class="nextAppointment" data-claimant-appointment="">
-    Not started
-  </td>
-  <td data-sort-value="2025-06-02T12:00:42.962Z" class="entitlementDate">
-    2 June 2025
-  </td>
-    <td data-sort-value="2025-06-02T12:00:42.962Z" class="dueDate">
-   
-  </td>
-</tr>
-  </tbody>
-</table>
+ 
 
   <!-- Endtable area -->
 

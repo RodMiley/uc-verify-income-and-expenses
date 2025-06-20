@@ -4,3 +4,51 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
 #}
 
 {% extends "govuk-prototype-kit/layouts/govuk-branded.njk" %}
+
+{% block header %}
+{% from "uc/agent-header/macro.njk" import ucAgentHeader %}
+
+{{
+ucAgentHeader({
+    "serviceName": "Universal Credit",
+    "serviceUrl": "/",
+    "classes": 'uc-agent-header--sticky',
+    "navigation": [
+    {
+        "href": "#",
+        "text": "To-do list"
+    },
+    {
+        "href": '#',
+        "text": "Claimants"
+    },
+    {
+        "href": '#',
+        "text": "Colleagues"
+    },
+    {
+        "href": '#',
+        "text": "Teams"
+    },
+    {
+        "href": '#',
+        "text": "Telephone ID check",
+        "attributes": {
+            "rel": "noopener noreferrer"
+        }
+    },
+    {
+        "href": '#',
+        "text": "Diary",
+        "opensInNewWindow": true,
+        "attributes": {
+            "rel": "noopener noreferrer"
+        }
+    }
+    ],
+    "action": "Sign out",
+    "actionUrl": "/sign-out",
+    "profileName": "Joe Bloggs"
+})
+}}
+{% endblock %}
