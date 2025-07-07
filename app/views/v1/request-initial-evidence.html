@@ -24,7 +24,11 @@
 
 <h2 class="govuk-heading-l">What you need to do</h2>
  <p>
-   1. Check if any of the following apply: <br><br>
+
+   Check if the review is in scope.  <br><br>
+
+ The review is not in scope if any of the following apply : 
+ <br><br>
  
       • Counter Fraud Compliance and Debt (CFCD) criminal investigations<br>
       • terminal illness with DS1500 or SR1 form received<br>
@@ -39,7 +43,7 @@
       • An open end date on either a FRAIMS or CFEMS interest<br>
       • This is a phone claim<br>
       * The claim is closed<br>
-      • nother reason (following a case conference with your team leader)<br>
+      • nother reason (following a case conference with your team leader)<br><br>
 
       If any of these reasons apply, the review is out of scope and you should complete this task. <br><br>
 
@@ -66,11 +70,118 @@
         html: '
         
         
-<p>Review in scope instructions</p>
+<h3 class="govuk-heading-m">Actions</h3>
 
-   
-            
-        '
+<p>
+  a. Add yourself as supporting on the claim.<br><br>
+
+b. Add pinned note<br><br>
+
+c. Copy and paste the message below. </p>
+
+<div class="govuk-inset-text">
+  Self-employment income and expenses review <br><br>
+
+The ‘Income and expenses review team’ are checking this claimant’s income and expenses. <br><br>
+
+If a claimant has a query: <br><br>
+
+DWP staff should send an email to: incomeandexpenses.reviewteam@dwp.gov.uk<br><br>
+ 
+Telephony agents should ask the claimant to send a journal message. <br><br>
+
+Please do not action any under or overpayment to-do’s generated as a result of this income and expenses review. This will be completed by the ‘Income and expenses review team’.<br><br>
+
+Do not unpin this note. 
+</div>
+
+<h3 class="govuk-heading-m">Create the ‘Claim Review: upload document’ to-do for the claimant.</h3>
+
+<p>
+a. Select self-employment evidence to be provided. <br>
+
+b. Copy and paste the message below into the ‘Instructions for claimant’. Make sure you complete all  [  ] fields.<br>
+
+c. Set the due date 14 days from today. </p>
+
+<div class="govuk-inset-text">
+
+
+Self-employment income and expenses review<br><br>
+
+We are reviewing the income and expenses you have reported for [START DATE OF ASSESSMENT PERIOD] to [END DATE OF ASSESSMENT PERIOD].  This is to make sure you are getting paid the right amount of Universal Credit. <br><br>
+
+Provide evidence of your income<br><br>
+
+- full statements for all your personal or business bank accounts, credit cards and PayPal accounts. These should include your full name, address and cover the whole assessment period.<br><br>
+
+- all your joint account statements, if you are in a joint claim<br><br>
+
+We need evidence of your expenses<br><br>
+
+- all receipts, invoices or other evidence for all the income and expenses you reported<br><br>
+
+- any income from trading that is held on online platforms. For example, income earned in your eBay or Vinted wallet.<br><br>
+
+If you do not have the evidence<br><br>
+
+If you do not have all the evidence we have requested, you should upload the evidence you do have.<br><br>
+
+You should also complete the ‘Comments’ box and tell us about the evidence you cannot provide and why. <br><br>
+
+We will review the evidence provided and will contact you if we need anything else. <br><br>
+
+If you do not complete this to-do<br><br>
+
+If you do not complete this to-do by [DATE] your Universal Credit payment may be stopped, and your claim could be closed.<br><br>
+
+Uploading explicit or indecent images, racist, offensive or threatening content could lead to legal action.<br><br>
+
+Send us a journal message if you want to discuss the review or you need help with your to-dos<br><br>
+
+
+.
+</div>
+
+
+<h3 class="govuk-heading-m">Send journal message</h3>
+
+<p>
+a. Copy and paste the message below. <br>
+
+b. Make sure you complete all  [  ] fields. </p>
+
+<div class="govuk-inset-text">
+
+Self-employment income and expenses review<br><br>
+
+We are reviewing your reported income and expenses for [START DATE OF ASSESSMENT PERIOD] to [END DATE OF ASSESSMENT PERIOD]. <br><br>
+
+We have created  "Claim Review: upload document" to-do so you can upload your evidence. The to-do contains specific instructions about what you need to provide. <br><br>
+
+If you do not complete the to-do and provide the evidence requested by [DATE] your Universal Credit payment may be stopped, and your claim could be closed.<br><br>
+
+Send us a journal message if you want to discuss the review or you need help with your to-do.<br><br>
+
+</div>
+
+
+<h3 class="govuk-heading-m">Add history note</h3>
+
+<p>
+a. Copy and paste the message below. <br>
+
+b. Make sure you complete the [DATE] field. </p>
+
+<div class="govuk-inset-text">
+  Self-employment income and expenses review<br><br>
+
+The a "Claim Review: upload document" to-do has been created for the claimant to provide their self-employment evidence. <br><br>
+
+The claimant needs to complete it by [DATE]. 
+
+</div>
+ '
       }
     }
   ]
@@ -85,7 +196,6 @@
 {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
 {{ govukRadios({
-  classes: "govuk-radios--inline",
   name: "scope",
   fieldset: {
     legend: {

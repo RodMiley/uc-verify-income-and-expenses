@@ -26,7 +26,7 @@
           <div class="dashboard__metric-value dashboard__metric-value--OUTSTANDING_JOURNAL_ENTRY " data-look-at-now-value-type="OUTSTANDING_JOURNAL_ENTRY">
             <div>
 
-                <span class="dashboard__metric-base-value" data-look-at-now-value="">0</span>
+                <span class="dashboard__metric-base-value" data-look-at-now-value="">5</span>
 
             </div>
             <div class="dashboard__metric-icons">
@@ -48,11 +48,7 @@
 
                 <span class="dashboard__metric-base-value" data-look-at-now-value="">
                   
-         {% if data['receiveEvidence']=='Given more time' %} 
-         1
-         {% else %}
-         0
-         {% endif %}
+        3
         </span>
 
             </div>
@@ -67,8 +63,13 @@
   <!-- End trigger area -->
 
   <!-- Start table area -->
+
+ {% set totNum = 0 %} 
+ 	{% for claimant in claimants %}
+  		 {% set totNum = totNum + 1 %}
+  {% endfor %}
  <h2 class="govuk-heading-m">Your reviews</h2>
- <p class="remove-outline" id="filters__results-number">Showing <span class="bold">1</span> claim review.</p>
+ <p class="remove-outline" id="filters__results-number">Showing <span class="bold">{{totNum}}</span> reviews.</p>
 
 
 <table class="sortable-table claimant-table meta-list qa-claimant-table clear no-margin" aria-label="Claimants details - Name, Stage, Last updated" data-sort-status-message="Table sorted by {column} ({direction})" data-sort-ascending-text="ascending" data-sort-descending-text="descending" data-sortable-table-persist-id="homePage">
@@ -81,52 +82,43 @@
   </tr>
   </thead>
   <tbody>
+
+   	{% for claimant in claimants %}
     <tr class="single list-item">
   
   <td data-sort-value="null" class="name">
-    <a href="/v1/tasklist" class="qa-name">Luis Endo</a> 
+    <a href="/v2/tasklist?reference={{claimant.reference}}" class="qa-name">{{claimant.name}}</a> 
     
   </td>
   <td data-sort-value="0" class="nextAppointment" data-claimant-appointment="">
-     {% include "./includes/_stages.html" %}
+  {% include "./includes/_stages.html" %}
   </td>
     <td data-sort-value="2025-06-02T12:00:42.962Z" class="dueDate">
+{% if claimant.substage =="Suspended (Awaiting a report your income and expenses to do)" %}
+  {{ 'DD MMMM YYYY' | baseDateAdd(27) }} 
 
+  {% elif claimant.substage =="Suspended (Awaiting missing evidence)" %}
+  {{ 'DD MMMM YYYY' | baseDateAdd(28) }} 
 
-  
-  {% if  data['scope']=='yes' and data['receiveEvidence']=='Suspended the claim' 
-      or   data['scope']=='yes' and data['reviewEvidence']=='Suspended the claim'
-      or  data['reviewEvidence']=='Suspended the claim (Awaiting missing evidence)'
-  %}
-    {{ 'DD MMMM YYYY' | baseDateAdd(30) }} 
+  {% elif claimant.substage =="Awaiting a new ‘Report your income and expenses to do’" %}
+  {{ 'DD MMMM YYYY' | baseDateAdd(26) }} 
 
-  {% elif  data['reviewEvidence']=='Referred to team leader' %}  
- <!-- show no due date-->  
-  
- {% elif  data['scope']=='yes' 
-     or data['reviewEvidence']=='Requested missing evidence'
-     or data['recieveEvidence']=='Requested evidence'
-     
-     %}
-        {{ 'DD MMMM YYYY' | baseDateAdd(15) }} 
+  {% elif  claimant.stage =='Awaiting initial evidence' and claimant.substage =="Given more time" %}
+    {{ 'DD MMMM YYYY' | baseDateAdd(12) }} 
 
+  {% elif  claimant.stage =='Awaiting initial evidence' and claimant.substage =="Suspended" %}
+    {{ 'DD MMMM YYYY' | baseDateAdd(20) }} 
 
-  {% elif data['scope']=='yes' and data['reviewEvidence']=='Referred to team leader'
-      or data['scope']=='yes' and data['receiveEvidence']=='Completed this task'
-   %}
-
-    {% elif  data['scope']=='yes' and data['reviewEvidence']=='Awaiting a new ‘Report your income and expenses to do’' %}
-     20 July 2025 (Claimant's pay date)
-   {% elif data['receiveEvidence']=='Completed this task' 
-  %}
-    
- <!-- show no due date-->  
-   
-
+  {% elif  claimant.stage =='Awaiting initial evidence' or claimant.substage =="Awaiting missing evidence" %}
+  {{ 'DD MMMM YYYY' | baseDateAdd(10) }} 
   {% else %}
    {% endif %}
   </td>
 </tr>
+
+  {% endfor %}
+
+
   </tbody>
 </table>
 

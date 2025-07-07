@@ -1,0 +1,290 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">
+      Review and analyse evidence
+    </h1>
+
+    {% include "./includes/_review-details.html" %}
+
+    <h2 class="govuk-heading-l">What you need to do</h2>
+
+        {% if data['reviewEvidence']=='Suspended the claim (Awaiting a report your income and expenses to do)' %}
+
+      <p>
+        Check if the claimant has completed the ‘Report your income and expenses’ to-do.<br><br>
+
+        If the claimant has not completed the requested to-do follow the instructions in ‘Close the claim’. <br><br>
+
+        If they have completed the to-do check if all the expenses are permitted and match what was agreed.<br><br>
+
+        If the expenses are not permitted or do not match what was agreed ‘Close the claim’.<br><br>
+
+        If all the expenses are permitted and the evidence matches follow the instructions in ‘lift the suspension’ and complete this task. 
+
+      </p>  
+ 
+      {% elif data['reviewEvidence']=='Suspended the claim (Awaiting missing evidence)' %}
+
+   <p>
+    1. Check if the claimant has completed the requested to-do and provided the missing evidence requested. <br><br>
+
+    If the claimant has not completed the requested to-do follow the instructions in ‘Close the claim’. <br><br>
+
+    If they have completed the to-do follow the instructions in ‘lift the suspension’. <br><br>
+
+    After you lift the suspension check that the expenses are all permitted and the evidence matches what was agreed. <br><br>
+
+    If all the expenses are permitted and the evidence matches complete this task. <br><br>
+
+    2. If the evidence does not match what was agreed or they have reported expenses that are not permitted follow the instructions in ‘Create a new ‘Report your income and expenses’. <br><br>
+   </p>
+
+      {% elif data['reviewEvidence']=='Awaiting a new ‘Report your income and expenses to do’'
+    %}
+       
+    <p>
+      Check if the claimant has completed the ‘Report your income and expenses’ to-do.<br><br>
+
+      If the claimant has not completed the requested to-do follow the instructions in ‘Suspend the claim’. <br><br>
+
+      If they have completed the to-do check if all the expenses are permitted and match what was agreed.  If all the expenses are permitted and the evidence matches complete this task.<br><br> 
+
+      If the to-do does not match what was agreed you can:<br><br>
+
+      • ‘Suspend the claim’ and ‘Create a new ‘Report your income and expenses’<br><br>
+
+      • ‘Suspend the claim’ and ‘request missing evidence’ if you feel it is appropriate<br><br>
+
+    </p>
+
+    {% elif data['reviewEvidence']=='Awaiting missing evidence' 
+    %}
+      <p>
+        Check if the claimant has completed the requested to-do and provided the missing evidence requested.<br><br>
+
+        If the claimant has not completed the requested to-do or provided the missing evidence follow the instructions in ‘Suspend  the claim’.<br><br>
+
+        if they have completed the to-do you need to decide whether the evidence provided matches what was agreed. <br><br>
+
+        If the evidence matches what was agreed, complete this task. <br><br>
+
+        You can request missing evidence again if you feel it is appropriate. Or you can ‘Create a new ‘Report your income and expenses’ to-do’. 
+      </p> 
+
+
+     {% elif data['reviewEvidence']=='Referred to team leader' %}
+
+    <p>
+      1. Read the agent notes to understand why the review has been referred to a team leader.<br><br>
+
+      2. Follow the instructions in ‘<strong>Call the claimant</strong>’.
+    </p>
+  
+    {% else %}
+
+         <p>
+      1. Review the reported income and expenses. <br><br>
+
+      2. Check the guidance below to make sure you know:<br><br>
+
+      • whether the expenses are permitted <br>
+      • what you need to analyse and consider when reviewing the reported income and expenses 
+    </p>
+
+    <h2 class="govuk-heading-l">
+      Guidance
+    </h2>
+
+    {% from "govuk/components/accordion/macro.njk" import govukAccordion %}
+
+    {{ govukAccordion({
+    id: "accordion-default",
+    items: [
+    {
+    heading: {
+    text: "Review the permitted guidance"
+    },
+    content: {
+    html: '<p class="govuk-body">
+      Review the guidance below to make sure you know whether the expenses are permitted:<br><br>
+
+      • <a href="">Report business income and expenses to Universal Credit if you are self-employed (opens in new
+        tab)</a><br><br>
+
+      • <a href="">Business expenses you can report to Universal Credit if you are self-employed (opens in new tab)</a>
+    </p>'
+    }
+    },
+    {
+    heading: {
+    text: "Analyse the reported income and expenses"
+    },
+    summary: {
+        text: "Instructions on the specific things you need to be aware of and check."
+      },
+    content: {
+    html: '<p class="govuk-body">
+
+      • do the income and expenses match the bank statements and evidence provided? <br><br>
+
+      • are the expenses appropriate for their type of business? Check the ‘Verify Self-employment’ to-do to see what
+      business they have declared. <br><br>
+
+      • are the expenses all permitted? Or have they claimed expenses they are not allowed to claim? For example,
+      expenses for business entertainment or capital repayment on loans. <br><br>
+
+      • has the claimant used simplified expenses or actual costs? For example, the claimant has claimed for both
+      business mileage and fuel costs. <br><br>
+
+      • are the expenses justified? For example, a printer more than once in the same assessment period. <br><br>
+
+      • dates on invoices and receipts to ensure the expenses occurred in the assessment period <br><br>
+
+      • credit card payments. Expenses paid for by credit card must only be reported in the assessment period in which
+      the expenses incurred. Claimants cannot report repayments of the expenses. <br><br>
+
+      • payment of interest on business loans. Claimants can make a deduction for payment of interest, not capital, of
+      up to a combined maximum of £41 in each assessment period. <br><br>
+
+      • gifts unconnected to the self-employment. For example, gifts on personal grounds should not be included in the
+      actual receipts or as expenses of the business. <br><br>
+
+      • expenses for tax. These must be payments for what was actually paid in the assessment period, not estimates.
+      <br><br>
+
+      • for any other discrepancies - has the claimant reported everything accurately? <br><br>
+
+      • do the income and expenses match the bank statements and evidence provided? <br><br>
+
+      • are the expenses appropriate for their type of business? Check the ‘Verify Self-employment’ to-do to see what
+      business they have declared. <br><br>
+
+      • are the expenses all permitted? Or have they claimed expenses they are not allowed to claim? For example,
+      expenses for business entertainment or capital repayment on loans. <br><br>
+
+      • has the claimant used simplified expenses or actual costs? For example, the claimant has claimed for both
+      business mileage and fuel costs. <br><br>
+
+      • are the expenses justified? For example, a printer more than once in the same assessment period. <br><br>
+
+      • dates on invoices and receipts to ensure the expenses occurred in the assessment period <br><br>
+
+      • credit card payments. Expenses paid for by credit card must only be reported in the assessment period in which
+      the expenses incurred. Claimants cannot report repayments of the expenses. <br><br>
+
+      • payment of interest on business loans. Claimants can make a deduction for payment of interest, not capital, of
+      up to a combined maximum of £41 in each assessment period. <br><br>
+
+      • gifts unconnected to the self-employment. For example, gifts on personal grounds should not be included in the
+      actual receipts or as expenses of the business. <br><br>
+
+      • expenses for tax. These must be payments for what was actually paid in the assessment period, not estimates.
+      <br><br>
+
+      • for any other discrepancies - has the claimant reported everything accurately? <br><br>
+
+    </p>'
+    }
+    }
+    ]
+    }) }}
+
+
+
+        <h2 class="govuk-heading-l">What you need to do after you have reviewed the evidence</h2>
+ 
+      <p>
+
+        1. You need to decide whether the reported income and expenses are all permitted and match the evidence provided. <br><br>
+
+        If the evidence matches and the expenses are all permitted, complete this task. <br><br>
+
+        2. Follow the instructions in referring the review to a Team leader if any of the following applies:<br><br>
+
+        • using the home for business<br><br>
+
+        • business costs if working from home<br><br>
+
+        • living at their place of business<br><br>
+
+        • simplified vs actual costs, including vehicle expenses<br><br>
+
+        • anything else that you feel needs further investigation<br><br>
+
+        If you do not need to refer the review to a Team leader follow the instructions in ‘<strong>Call the claimant</strong>’.
+      </p>
+     {% endif %}  
+
+    
+   
+
+    <h2 class="govuk-heading-l">Instructions</h2>
+
+        {% include "./includes/_review-actions-accordion.html" %}
+
+
+    <form class="form" action="tasklist?reference={{claimantcase.reference}}" method="post">
+      {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+      {{ govukRadios({
+      name: "reviewEvidence",
+      fieldset: {
+      legend: {
+      text: "What have you done?",
+      isPageHeading: false,
+      classes: "govuk-fieldset__legend--m"
+      }
+      },
+      items: [
+      {
+      value: "Referred to team leader",
+      text: "Referred to team leader"
+      },
+      {
+      value: "Awaiting missing evidence",
+      text: "Requested missing evidence"
+      },
+      {
+      value: "Awaiting a new ‘Report your income and expenses to do’",
+      text: "Created a new ‘Report your income and expenses to do’"
+      },
+      {
+      value: "Suspended the claim (Awaiting missing evidence)",
+      text: "Suspended the claim (Awaiting missing evidence)"
+      },
+        {
+      value: "Suspended the claim (Awaiting a report your income and expenses to do)",
+      text: "Suspended the claim (Awaiting a report your income and expenses to do)"
+      },
+      {
+      value: "Completed this task",
+      text: "Completed this task"
+      }
+      ]
+      }) }}
+
+      <button type="submit" class="govuk-button" data-module="govuk-button">
+        Save and continue
+      </button>
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

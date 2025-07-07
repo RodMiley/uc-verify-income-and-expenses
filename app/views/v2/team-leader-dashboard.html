@@ -1,0 +1,69 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-l">
+        Team leader dashboard
+      </h1>
+  <!-- Start table area -->
+ <h2 class="govuk-heading-m">Your team has 1,046 reviews</h2>
+
+<table class="sortable-table claimant-table meta-list qa-claimant-table clear no-margin" aria-label="Claimants details - Name, Stage, Last updated" data-sort-status-message="Table sorted by {column} ({direction})" data-sort-ascending-text="ascending" data-sort-descending-text="descending" data-sortable-table-persist-id="homePage">
+  <thead>
+  <tr>
+    
+    <th scope="col" class="qa-name-title">Name</th>
+    <th scope="col" class="qa-next-appointment-title govuk-table__header--numeric" aria-sort="none"><button type="button" class="link-style sortable-table__button" aria-describedby="sortable-table__sort-descending">Total reviews<span class="icon" aria-hidden="true"></span></button></th>
+    <th scope="col" class="qa-entitlement-date-title  govuk-table__header--numeric" aria-sort="none"><button type="button" class="link-style sortable-table__button" aria-describedby="sortable-table__sort-descending">Not started<span class="icon" aria-hidden="true"></span></button></th>
+      <th scope="col" class="qa-entitlement-date-title  govuk-table__header--numeric" aria-sort="none"><button type="button" class="link-style sortable-table__button" aria-describedby="sortable-table__sort-descending">Awaiting evidence<span class="icon" aria-hidden="true"></span></button></th>
+       <th scope="col" class="qa-entitlement-date-title  govuk-table__header--numeric" aria-sort="none"><button type="button" class="link-style sortable-table__button" aria-describedby="sortable-table__sort-descending">Reviewing<span class="icon" aria-hidden="true"></span></button></th>
+             <th scope="col" class="qa-entitlement-date-title  govuk-table__header--numeric" aria-sort="none"><button type="button" class="link-style sortable-table__button" aria-describedby="sortable-table__sort-descending">Record outcome<span class="icon" aria-hidden="true"></span></button></th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr class="single list-item">
+  
+  <td data-sort-value="null">
+    <a href="agent-dashboard.html" class="">IE review agent</a> 
+    
+  </td>
+  <td data-sort-value="0" class="govuk-table__cell--numeric" >
+   40
+  </td>
+  <td data-sort-value="" class="govuk-table__cell--numeric">
+    10
+  </td>
+    <td data-sort-value="" class="govuk-table__cell--numeric">
+   10
+  </td>
+      <td data-sort-value="" class="govuk-table__cell--numeric">
+  10
+  </td>
+      <td data-sort-value="" class="govuk-table__cell--numeric">
+  10
+  </td>
+</tr>
+  </tbody>
+</table>
+
+  <!-- Endtable area -->
+
+
+    </div>
+  </div>
+
+{% endblock %}

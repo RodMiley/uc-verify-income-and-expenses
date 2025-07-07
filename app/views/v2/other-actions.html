@@ -25,14 +25,10 @@
 {% from "govuk/components/table/macro.njk" import govukTable %}
 
 {% set due %}
-<h2 class="govuk-heading-l">Due</h2>
-  {% if data['receiveEvidence']=='Given more time' %} 
-         
 
 {% from "govuk/components/table/macro.njk" import govukTable %}
 
 {{ govukTable({
-  caption: "Dates and amounts",
   captionClasses: "govuk-table__caption--m",
   firstCellIsHeader: true,
   head: [
@@ -49,7 +45,7 @@
   rows: [
     [
       {
-        text: "Luis Endo"
+        text: "Florian Frimpong"
       },
       {
         html: '<a href="uploaded-information">Review uploaded information</a>'
@@ -57,14 +53,31 @@
       {
         html: '12 July 2025'
       }
+    ], [
+      {
+        text: "Aurlie Riba"
+      },
+      {
+        html: '<a href="uploaded-information">Review uploaded information</a>'
+      },
+      {
+        html: '16 July 2025'
+      }
+    ], [
+      {
+        text: "Kathlin Clewes"
+      },
+      {
+        html: '<a href="uploaded-information">Review uploaded information</a>'
+      },
+      {
+        html: '20 July 2025'
+      }
     ]
   ]
 }) }}
 
 
-         {% else %}
-        <p class="text">There are no other actions due</p>
-         {% endif %}
 {% endset -%}
 
 {% set overdue %}

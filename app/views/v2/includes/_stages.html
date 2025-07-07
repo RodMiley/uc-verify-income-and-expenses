@@ -1,0 +1,79 @@
+{% if claimantcase.stage =='Record outcome'
+   or claimant.stage =='Record outcome' %}
+Record outcome 
+
+
+{% elif claimantcase.stage =='Reviewing'
+   or claimant.stage =='Reviewing' 
+   or claimantcase.stage =='Awaiting initial evidence' and data['receiveEvidence']=='Completed this task' 
+   or claimant.stage =='Awaiting initial evidence' and data['receiveEvidence']=='Completed this task'
+   %}
+Reviewing 
+
+
+
+  {% elif claimantcase.stage =='Awaiting initial evidence'
+     or claimant.stage =='Awaiting initial evidence'
+     or claimantcase.stage =='Not started' and data['scope']=='yes'
+     or claimant.stage =='Not started' and data['scope']=='yes' %}
+
+  Awaiting initial evidence 
+
+
+  {% elif claimantcase.stage =='Not started' 
+     or claimant.stage =='Not started'%}
+
+  Not started 
+  {% endif %}
+<br>
+{% if claimantcase.substage =='Referred to team leader'
+         or claimant.substage =='Referred to team leader' %}
+
+Referred to team leader
+
+{% elif claimantcase.substage =='Suspended (Awaiting a report your income and expenses to do)'
+         or claimant.substage =='Suspended (Awaiting a report your income and expenses to do)' %}
+
+Suspended (Awaiting a report your income and expenses to do)
+
+
+{% elif claimantcase.substage =='Suspended (Awaiting missing evidence)'
+         or claimant.substage =='Suspended (Awaiting missing evidence)' %}
+
+Suspended (Awaiting missing evidence)
+
+
+{% elif claimantcase.substage =='Awaiting a new ‘Report your income and expenses to do’'
+         or claimant.substage =='Awaiting a new ‘Report your income and expenses to do’' %}
+
+Awaiting a new ‘Report your income and expenses to do’
+
+{% elif claimantcase.substage =='Awaiting missing evidence'
+         or claimant.substage =='Awaiting missing evidence' %}
+
+Awaiting missing evidence         
+
+ {% elif claimantcase.stage =='Awaiting initial evidence' and data['receiveEvidence']=='Re-requested' 
+         or claimant.stage =='Awaiting initial evidence' and data['receiveEvidence']=='Re-requested'
+         or claimantcase.substage =='Re-requested'
+         or claimant.substage =='Re-requested'
+      %}
+      Re-requested
+      {% elif claimantcase.stage =='Awaiting initial evidence' and data['receiveEvidence']=='Suspended' 
+         or claimant.stage =='Awaiting initial evidence' and data['receiveEvidence']=='Suspended' 
+         or claimantcase.substage =='Suspended'
+         or claimant.substage =='Suspended'
+      %}
+      Suspended
+           
+      {% elif claimantcase.substage =='Given more time'
+         or claimant.substage =='Given more time'
+         or claimantcase.stage =='Awaiting initial evidence'and data['receiveEvidence']=='Given more time' 
+         or claimant.stage =='Awaiting initial evidence' and data['receiveEvidence']=='Given more time' 
+
+      %}
+      Given more time
+      {% endif %}
+    
+
+ 

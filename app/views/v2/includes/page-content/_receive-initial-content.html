@@ -1,26 +1,3 @@
-{% extends "layouts/main.html" %}
-
-{% block pageTitle %}
-  Content page template – {{ serviceName }} – GOV.UK Prototype Kit
-{% endblock %}
-
-{% block beforeContent %}
-  {{ govukBackLink({
-    text: "Back",
-    href: "javascript:window.history.back()"
-  }) }}
-{% endblock %}
-
-{% block content %}
-
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-
-      <h1 class="govuk-heading-xl">
-       Receive evidence
-      </h1>
-
-      {% include "./includes/_review-details.html" %}
 <h2 class="govuk-heading-l">What you need to do</h2>
 
 {% if data['receiveEvidence']=='Awaiting evidence' %}
@@ -75,49 +52,11 @@ If you cannot read the information <strong>request the evidence again</strong>. 
 
       <h2 class="govuk-heading-l">Instructions</h2>
 
- {% include "./includes/_receive-actions-accordion.html" %}
+      <p>Read the relevant section below based on what you need to do next.</p>
 
-<form class="form" action="tasklist" method="post">
-  {% from "govuk/components/radios/macro.njk" import govukRadios %}
-
-{{ govukRadios({
-  name: "receiveEvidence",
-  fieldset: {
-    legend: {
-      text: "What have you done?",
-      isPageHeading: false,
-      classes: "govuk-fieldset__legend--m"
-    }
-  },
-  items: [
-    {
-      value: "Given more time",
-      text: "Given more time"
-    },
-    {
-      value: "Suspended the claim",
-      text: "Suspended the claim"
-    },
-    {
-      value: "Re-requested",
-      text: "Requested evidence"
-    },
-    {
-      value: "Completed this task",
-      text: "Completed this task"
-    }
-  ]
-}) }}
-
-<button type="submit" class="govuk-button" data-module="govuk-button">
-  Save and continue
-</button>
-</form>
-
+          <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
+              {% include "/v2/includes/accordion-content/_request-evidence-again.html" %}
+              {% include "/v2/includes/accordion-content/_give-more-time.html" %}
+              {% include "/v2/includes/accordion-content/_suspend-the-claim-failed-to-provide-evidence.html" %}
+              {% include "/v2/includes/accordion-content/_close-the-claim" %}
     </div>
-  </div>
-
-
-
-
-{% endblock %}
